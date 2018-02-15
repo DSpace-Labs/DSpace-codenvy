@@ -1,0 +1,78 @@
+{
+  "name": "dspace-with-db",
+  "source": {
+    "origin": "eclipse/ubuntu_jdk8",
+    "type": "image"
+  },
+  "components": [
+    {
+      "version": "1.8.0_45",
+      "name": "JDK"
+    },
+    {
+      "version": "3.2.2",
+      "name": "Maven"
+    },
+    {
+      "version": "8.0.24",
+      "name": "Tomcat"
+    },
+    {
+      "version": "1.10.2",
+      "name": "Ant"
+    }
+  ],
+  "tags": [
+    "Java 1.8, Tomcat 8, MySQL 5.7, Ant 1.10.2"
+  ],
+  "id": "stack9vbtzqfftc5nsvpp",
+  "workspaceConfig": {
+    "defaultEnv": "default",
+    "environments": {
+      "default": {
+        "machines": {
+          "db": {
+            "attributes": {
+              "memoryLimitBytes": "1073741824"
+            },
+            "servers": {},
+            "agents": [
+              "org.eclipse.che.terminal",
+              "org.eclipse.che.exec"
+            ]
+          },
+          "dev-machine": {
+            "attributes": {
+              "memoryLimitBytes": "2147483648"
+            },
+            "servers": {},
+            "agents": [
+              "org.eclipse.che.ssh",
+              "org.eclipse.che.ws-agent",
+              "org.eclipse.che.terminal",
+              "org.eclipse.che.exec"
+            ]
+          }
+        },
+        "recipe": {
+          "type": "compose",
+          "content": "services:\n db:\n  image: terrywbrady/dspacedb\n  environment:\n   POSTGRES_DB: dspace\n   POSTGRES_PASSWORD: dspace\n   POSTGRES_USER: dspace\n  mem_limit: 1073741824\n dev-machine:\n  image: terrywbrady/dspace\n  mem_limit: 2147483648\n  depends_on:\n   - db\n",
+          "contentType": "application/x-yaml"
+        }
+      }
+    },
+    "projects": [],
+    "name": "default",
+    "commands": [
+      {
+        "commandLine": "psql -U $POSTGRES_USER -W -d $POSTGRES_DB -c '\\d+;'",
+        "name": "show tables",
+        "attributes": {},
+        "type": "custom"
+      }
+    ],
+    "links": []
+  },
+  "creator": "user7h4bmyl4ya6roowy",
+  "scope": "general"
+}
