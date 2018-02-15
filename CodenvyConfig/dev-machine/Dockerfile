@@ -11,5 +11,12 @@ ENV PATH $ANT_HOME/bin:$PATH
 RUN mkdir $ANT_HOME && \
     wget -qO- "https://www.apache.org/dist/ant/binaries/apache-ant-$ANT_VERSION-bin.tar.gz" | tar -zx --strip-components=1 -C $ANT_HOME 
 
-#TODO - create /home/user/dspace
-#TODO - ln -s /home/user/dspace/webapps/X /home/user/tomcat8/webapps/X
+RUN mkdir /home/user/dspace
+
+RUN ln -s /home/user/dspace/webapps/xmlui /home/user/tomcat8/webapps/xmlui
+RUN ln -s /home/user/dspace/webapps/jspui /home/user/tomcat8/webapps/jspui
+RUN ln -s /home/user/dspace/webapps/rest /home/user/tomcat8/webapps/rest
+RUN ln -s /home/user/dspace/webapps/oai /home/user/tomcat8/webapps/oai
+RUN ln -s /home/user/dspace/webapps/sword /home/user/tomcat8/webapps/sword
+RUN ln -s /home/user/dspace/webapps/swordv2 /home/user/tomcat8/webapps/swordv2
+RUN ln -s /home/user/dspace/webapps/rdf /home/user/tomcat8/webapps/rdf
