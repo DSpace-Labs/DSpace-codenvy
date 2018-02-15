@@ -1,8 +1,8 @@
+# From https://github.com/DSpace-Labs/dspace-dev-docker/tree/master/postgres
 FROM postgres
 
 ENV POSTGRES_DB dspace
 ENV POSTGRES_USER dspace
 ENV POSTGRES_PASSWORD dspace
 
-RUN echo "create extension pgcrypto;" > /tmp/pgcrypto.txt
-CMD psql -U postgres < /tmp/pgcrypto.txt
+COPY install-pgcrypto.sh /docker-entrypoint-initdb.d/
