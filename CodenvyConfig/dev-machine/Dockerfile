@@ -10,3 +10,6 @@ ENV PATH $ANT_HOME/bin:$PATH
 
 RUN mkdir $ANT_HOME && \
     wget -qO- "https://www.apache.org/dist/ant/binaries/apache-ant-$ANT_VERSION-bin.tar.gz" | tar -zx --strip-components=1 -C $ANT_HOME 
+
+#TODO - create /home/user/dspace
+#TODO - ln -s /home/user/dspace/webapps/X /home/user/tomcat8/webapps/X
