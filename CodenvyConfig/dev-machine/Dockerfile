@@ -20,3 +20,6 @@ RUN ln -s /home/user/dspace/webapps/oai /home/user/tomcat8/webapps/oai
 RUN ln -s /home/user/dspace/webapps/sword /home/user/tomcat8/webapps/sword
 RUN ln -s /home/user/dspace/webapps/swordv2 /home/user/tomcat8/webapps/swordv2
 RUN ln -s /home/user/dspace/webapps/rdf /home/user/tomcat8/webapps/rdf
+
+# Install a Codenvy-specific local.cfg file in the project home directory
+COPY local.cfg /projects
