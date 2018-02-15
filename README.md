@@ -2,11 +2,11 @@
 # DSpace on Codenvy
 This is a fork of the DSpace 6.2 (non-source) release: https://github.com/DSpace/DSpace/releases/tag/dspace-6.2
 
-This repository will also contain the source Dockerfiles for use on the Codenvy service.
+This repository will also contain the [configuration files and source Dockerfiles for use on the Codenvy service](CodenvyConfig/Readme.md).
 
 The repository will also contain instructions on how to configure a Codenvy workspace using this code.
 
-Note: hte [local.cfg](dspace/config/local.cfg) file has been pre-configured for use on Codenvy.
+Note: the [local.cfg](dspace/config/local.cfg) file has been pre-configured for use on Codenvy.
 
 # DSpace
 
