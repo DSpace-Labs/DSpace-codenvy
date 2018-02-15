@@ -8,6 +8,8 @@ DSpace runs as a multi-machine instance on Codenvy.
 ## Docker file configurations
 
 - [db](db/Dockerfile)
+  - will be published as terrywbrady/dspacedb
 - [dev-machine](dev-machine/Dockerfile)
+  - published as terrywbrady/dspace
 
 ## Codenvy Configuration Notes
