@@ -37,8 +37,8 @@
             },
             "servers": {},
             "agents": [
-              "org.eclipse.che.terminal",
-              "org.eclipse.che.exec"
+              "org.eclipse.che.exec",
+              "org.eclipse.che.terminal"
             ]
           },
           "dev-machine": {
@@ -47,32 +47,59 @@
             },
             "servers": {},
             "agents": [
-              "org.eclipse.che.ssh",
-              "org.eclipse.che.ws-agent",
+              "org.eclipse.che.exec",
               "org.eclipse.che.terminal",
-              "org.eclipse.che.exec"
+              "org.eclipse.che.ws-agent",
+              "org.eclipse.che.ssh"
             ]
           }
         },
         "recipe": {
           "type": "compose",
-          "content": "services:\n db:\n  image: terrywbrady/dspacedb\n  environment:\n   POSTGRES_DB: dspace\n   POSTGRES_PASSWORD: dspace\n   POSTGRES_USER: dspace\n  mem_limit: 1073741824\n dev-machine:\n  image: terrywbrady/dspace\n  mem_limit: 2147483648\n  depends_on:\n   - db\n",
+          "content": "services:\n db:\n  image: terrywbrady/dspacedb\n  mem_limit: 1073741824\n dev-machine:\n  image: terrywbrady/dspace\n  mem_limit: 2147483648\n  depends_on:\n   - db\n",
           "contentType": "application/x-yaml"
         }
       }
     },
     "projects": [],
-    "name": "default",
+    "name": "dspace-with-db",
     "commands": [
       {
-        "commandLine": "psql -U $POSTGRES_USER -W -d $POSTGRES_DB -c '\\d+;'",
-        "name": "show tables",
+        "commandLine": "/home/user/tomcat8/bin/catalina.sh run",
+        "name": "5. start tomcat",
+        "attributes": {
+          "previewUrl": "${server.8080}xmlui"
+        },
+        "type": "run"
+      },
+      {
+        "commandLine": "echo \"IN TERMINAL RUN /home/user/dspace/bin/dspace create-administrator\"",
+        "name": "4. create administrator ",
         "attributes": {},
-        "type": "custom"
+        "type": "build"
+      },
+      {
+        "commandLine": "cd ${current.project.path}/dspace/target/dspace-installer;ant update",
+        "name": "3. ant build",
+        "attributes": {},
+        "type": "build"
+      },
+      {
+        "commandLine": "cd ${current.project.path};mvn package",
+        "name": "2. mvn build",
+        "attributes": {},
+        "type": "build"
+      },
+      {
+        "commandLine": "psql -U postgres -d dspace -c 'create extension pgcrypto;'",
+        "name": "1. add pgcrypto (db)",
+        "attributes": {},
+        "type": "build"
       }
     ],
     "links": []
   },
+  "description": "Designed for running DSpace 6.",
   "creator": "user7h4bmyl4ya6roowy",
   "scope": "general"
 }
