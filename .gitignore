@@ -1,4 +1,4 @@
 .project
 dspace/target/*
 dspace/modules/*/target/*
-local.cfg
+/local.cfg
