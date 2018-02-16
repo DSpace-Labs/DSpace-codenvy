@@ -6,7 +6,23 @@ This repository will also contain the [configuration files and source Dockerfile
 
 The repository will also contain instructions on how to configure a Codenvy workspace using this code.
 
-Note: the [local.cfg](dspace/config/local.cfg) file has been pre-configured for use on Codenvy.
+## Using Codenvy
+Codenvy offers a free tier that includes a server with 3GB of memory.  The server will stay alive for 15 minutes of inactivity.
+
+With a paid plan, more memory is available.  Servers running within a paid plan stay alive for 4 hours of inactivity.
+
+## Try it yourself
+A [local.cfg](dspace/config/local.cfg) file has been pre-configured for use on Codenvy.  This file will be installed from Docker.
+
+It is possible to give Codenvy access to your GitHub credentials.  In this example, a repository has been cloned without read/write credentials.  The project should discuss our advice on enabling write access.
+
+Once you have registered for Codenvy, click [here](https://codenvy.io/dashboard/#/load-factory/factory3322d1jiho3j28re) to replicate the sample DSpace workspace.
+
+The following [Video](https://youtu.be/LX6RfNr0bLk) illustrates how to use the service.
+
+<hr/>
+DSpace README below...
+<hr/>
 
 # DSpace
 
