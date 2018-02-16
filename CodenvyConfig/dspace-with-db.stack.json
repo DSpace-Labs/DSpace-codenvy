@@ -104,7 +104,7 @@
         "type": "Build"
       },
       {
-        "commandLine": "/home/user/tomcat8/bin/catalina.sh run",
+        "commandLine": "export JAVA_OPTS=-Xmx1500m;/home/user/tomcat8/bin/catalina.sh run",
         "name": "4. start tomcat",
         "attributes": {
           "previewUrl": "${server.8080}xmlui"
