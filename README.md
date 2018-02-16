@@ -20,6 +20,8 @@ Once you have registered for Codenvy, click [here](https://codenvy.io/dashboard/
 
 The following [Video](https://youtu.be/LX6RfNr0bLk) illustrates how to use the service.
 
+Note: Codenvy will deploy apps over http (not https).  XMLUI, JSPUI, and OAI will be accessible.  REST is currently not accessible.
+
 <hr/>
 DSpace README below...
 <hr/>
