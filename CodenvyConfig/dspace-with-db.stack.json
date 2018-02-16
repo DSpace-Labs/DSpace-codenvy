@@ -27,7 +27,6 @@
   ],
   "id": "stack9vbtzqfftc5nsvpp",
   "workspaceConfig": {
-    "defaultEnv": "default",
     "environments": {
       "default": {
         "machines": {
@@ -37,8 +36,8 @@
             },
             "servers": {},
             "agents": [
-              "org.eclipse.che.exec",
-              "org.eclipse.che.terminal"
+              "org.eclipse.che.terminal",
+              "org.eclipse.che.exec"
             ]
           },
           "dev-machine": {
@@ -47,54 +46,76 @@
             },
             "servers": {},
             "agents": [
-              "org.eclipse.che.exec",
-              "org.eclipse.che.terminal",
+              "org.eclipse.che.ssh",
               "org.eclipse.che.ws-agent",
-              "org.eclipse.che.ssh"
+              "org.eclipse.che.terminal",
+              "org.eclipse.che.exec"
             ]
           }
         },
         "recipe": {
           "type": "compose",
-          "content": "services:\n db:\n  image: terrywbrady/dspacedb\n  mem_limit: 1073741824\n dev-machine:\n  image: terrywbrady/dspace\n  mem_limit: 2147483648\n  depends_on:\n   - db\n",
+          "content": "services:\n db:\n  image: 'terrywbrady/dspacedb:latest'\n  mem_limit: 1073741824\n dev-machine:\n  image: 'terrywbrady/dspace:latest'\n  mem_limit: 2147483648\n  depends_on:\n   - db\n",
           "contentType": "application/x-yaml"
         }
       }
     },
-    "projects": [],
+    "defaultEnv": "default",
+    "projects": [
+      {
+        "links": [],
+        "name": "DSpace-codenvy",
+        "attributes": {},
+        "source": {
+          "location": "https://github.com/DSpace-Labs/DSpace-codenvy.git",
+          "type": "git",
+          "parameters": {}
+        },
+        "path": "/DSpace-codenvy",
+        "description": "",
+        "problems": [],
+        "mixins": []
+      }
+    ],
     "name": "dspace-with-db",
     "commands": [
       {
-        "commandLine": "/home/user/tomcat8/bin/catalina.sh run",
-        "name": "5. start tomcat",
-        "attributes": {
-          "previewUrl": "${server.8080}xmlui"
-        },
-        "type": "run"
-      },
-      {
-        "commandLine": "echo \"IN TERMINAL RUN /home/user/dspace/bin/dspace create-administrator\"",
-        "name": "4. create administrator ",
+        "commandLine": "cp /home/user/local.cfg ${current.project.path}",
+        "name": "0. install local.cfg",
         "attributes": {},
-        "type": "build"
-      },
-      {
-        "commandLine": "cd ${current.project.path}/dspace/target/dspace-installer;ant update",
-        "name": "3. ant build",
-        "attributes": {},
-        "type": "build"
+        "type": "Build"
       },
       {
         "commandLine": "cd ${current.project.path};mvn package",
-        "name": "2. mvn build",
+        "name": "1. mvn build",
         "attributes": {},
-        "type": "build"
+        "type": "Build"
       },
       {
-        "commandLine": "psql -U postgres -d dspace -c 'create extension pgcrypto;'",
-        "name": "1. add pgcrypto (db)",
+        "commandLine": "cd ${current.project.path}/dspace/target/dspace-installer;ant update",
+        "name": "2. ant build",
         "attributes": {},
-        "type": "build"
+        "type": "Build"
+      },
+      {
+        "commandLine": "/home/user/dspace/bin/dspace create-administrator -e test@test.edu -f Admin -l User -p admin -c en",
+        "name": "3. create administrator ",
+        "attributes": {},
+        "type": "Build"
+      },
+      {
+        "commandLine": "/home/user/tomcat8/bin/catalina.sh run",
+        "name": "4. start tomcat",
+        "attributes": {
+          "previewUrl": "${server.8080}xmlui"
+        },
+        "type": "Run"
+      },
+      {
+        "commandLine": "cd ${current.project.path}/TestData;for file in COMM* COLL* ITEM*; do /home/user/dspace/bin/dspace packager -r -t AIP -e test@test.edu -f -u $file;done",
+        "name": "5. load sample data from AIP",
+        "attributes": {},
+        "type": "Run"
       }
     ],
     "links": []
