@@ -18,7 +18,7 @@ It is possible to give Codenvy access to your GitHub credentials.  In this examp
 
 Once you have registered for Codenvy, click [here](https://codenvy.io/dashboard/#/load-factory/factory3322d1jiho3j28re) to replicate the sample DSpace workspace.
 
-The following [Video - tbd]() illustrates how to use the service.
+The following [Video](https://youtu.be/LX6RfNr0bLk) illustrates how to use the service.
 
 <hr/>
 DSpace README below...
