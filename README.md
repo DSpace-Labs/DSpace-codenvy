@@ -22,7 +22,7 @@ The following [Video](https://youtu.be/LX6RfNr0bLk) illustrates how to use the s
 
 Note: Codenvy will deploy apps over http (not https).  
   - XMLUI, JSPUI, and OAI will be accessible.  
-  - The [REST web.xml file](dspace/modules/rest/src/main/webapp/web.xml) has been modified to disable https on Codenvy.
+  - The [REST web.xml file](dspace/modules/rest/src/main/webapp/WEB-INF/web.xml) has been modified to disable https on Codenvy.
 
 <hr/>
 DSpace README below...
