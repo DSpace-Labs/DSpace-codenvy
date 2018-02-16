@@ -20,6 +20,10 @@ Once you have registered for Codenvy, click [here](https://codenvy.io/dashboard/
 
 The following [Video - tbd]() illustrates how to use the service.
 
+<hr/>
+DSpace README below...
+<hr/>
+
 # DSpace
 
 [![Build Status](https://travis-ci.org/DSpace/DSpace.png?branch=master)](https://travis-ci.org/DSpace/DSpace)
