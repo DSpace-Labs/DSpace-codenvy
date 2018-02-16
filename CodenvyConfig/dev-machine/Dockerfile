@@ -23,7 +23,4 @@ RUN ln -s /home/user/dspace/webapps/swordv2 /home/user/tomcat8/webapps/swordv2
 RUN ln -s /home/user/dspace/webapps/rdf /home/user/tomcat8/webapps/rdf
 RUN ln -s /home/user/dspace/webapps/solr /home/user/tomcat8/webapps/solr
 
-# Install a Codenvy-specific local.cfg file in the project home directory
-COPY local.cfg /home/user/local.cfg
-
 ENV JAVA_OPTS=-Xmx500m
