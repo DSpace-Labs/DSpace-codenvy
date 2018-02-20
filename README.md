@@ -16,7 +16,7 @@ A [local.cfg](dspace/config/local.cfg) file has been pre-configured for use on C
 
 It is possible to give Codenvy access to your GitHub credentials.  In this example, a repository has been cloned without read/write credentials.  The project should discuss our advice on enabling write access.
 
-Once you have registered for Codenvy, click [here](https://codenvy.io/dashboard/#/load-factory/factoryae32f6c71pprrp4g) to replicate the sample DSpace workspace.
+Once you have registered for Codenvy, click [here](https://codenvy.io/dashboard/#/load-factory/factoryqt5t82n637t7kut8) to replicate the sample DSpace workspace.
 
 The following [Video](https://youtu.be/LX6RfNr0bLk) illustrates how to use the service.
 
