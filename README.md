@@ -18,7 +18,9 @@ It is possible to give Codenvy access to your GitHub credentials.  In this examp
 
 Once you have registered for Codenvy, click [here](https://codenvy.io/dashboard/#/load-factory/factoryb06wbz82fomzuvzq) to replicate the sample DSpace workspace.
 
-The following [Video](https://youtu.be/LX6RfNr0bLk) illustrates how to use the service.
+## Demonstration Video 
+[![Demonstration Video](https://i.ytimg.com/vi/LX6RfNr0bLk/hqdefault.jpg)](https://www.youtube.com/watch?v=LX6RfNr0bLk)
+
 
 Note: Codenvy will deploy apps over http (not https).  
   - XMLUI, JSPUI, and OAI will be accessible.  
