@@ -14,13 +14,6 @@ RUN mkdir $ANT_HOME && \
 RUN mkdir /home/user/dspace
 RUN mkdir /home/user/dspace/upload
 
-RUN ln -s /home/user/dspace/webapps/xmlui /home/user/tomcat8/webapps/xmlui
-RUN ln -s /home/user/dspace/webapps/jspui /home/user/tomcat8/webapps/jspui
-RUN ln -s /home/user/dspace/webapps/rest /home/user/tomcat8/webapps/rest
-RUN ln -s /home/user/dspace/webapps/oai /home/user/tomcat8/webapps/oai
-RUN ln -s /home/user/dspace/webapps/sword /home/user/tomcat8/webapps/sword
-RUN ln -s /home/user/dspace/webapps/swordv2 /home/user/tomcat8/webapps/swordv2
-RUN ln -s /home/user/dspace/webapps/rdf /home/user/tomcat8/webapps/rdf
-RUN ln -s /home/user/dspace/webapps/solr /home/user/tomcat8/webapps/solr
+RUN ln -s /home/user/dspace/webapps/ /home/user/tomcat8/webapps
 
 ENV JAVA_OPTS=-Xmx500m
