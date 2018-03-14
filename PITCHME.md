@@ -162,7 +162,7 @@ PROPOSAL: DSpace should publish some form of this as a docker image.
 
 ## DSpace Workspace Config
 
-+++?image=presentation/ws-machines.png
++++?image=presentation/ws-machine.png
 
 +++?image=presentation/ws-projects.png
 
@@ -173,8 +173,19 @@ PROPOSAL: DSpace should publish some form of this as a docker image.
 - Populated from dspace-6_2-release
   - https://github.com/DSpace-Labs/DSpace-codenvy/tree/master/dspace
 - Overrides to support Codenvy
-  - https://github.com/DSpace-Labs/DSpace-codenvy/blob/master/dspace/modules/rest/src/main/webapp/WEB-INF/web.xml#L62-L74
-  - https://github.com/DSpace-Labs/DSpace-codenvy/blob/master/dspace/modules/solr/src/main/webapp/WEB-INF/web.xml
+  - [Enable rest to run over http](https://github.com/DSpace-Labs/DSpace-codenvy/blob/master/dspace/modules/rest/src/main/webapp/WEB-INF/web.xml#L62-L74)
+  - [Remove SOLR localhost restriction](https://github.com/DSpace-Labs/DSpace-codenvy/blob/master/dspace/modules/solr/src/main/webapp/WEB-INF/web.xml#L86-L91)
+
++++ 
+
+## local.cfg for Che
+
+/home/user seems to be the only writable directory (I think)
+
++++?code=CodenvyConfig/local.cfg
+
+
+
 
 
 ---
