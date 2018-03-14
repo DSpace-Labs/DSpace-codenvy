@@ -123,8 +123,10 @@ Volumes cannot be declared in the compose file.
             mem_limit: 2684354560
             depends_on:
             - db
-@2-6(Database Image)
-@7-11 (Dev Machine Image - for Che and Tomcat)
+@[2-6](Database Image)
+@[6](Postgres data is written to the workspace rather than in transient storage in the docker image)
+@[7-11](Dev Machine Image - for Che and Tomcat)
+@[11](Thie defines the dependencies between the images)
 
 +++
 
@@ -139,6 +141,6 @@ Note: the environment variables could be externalized to the Che configuraiton
 PROPOSAL: DSpace should publish some form of this as a docker image.
 
 +++?code=CodenvyConfig/db/Dockerfile
-@8(install pgcrypto)
+@[8](install pgcrypto)
 
 +++?code=CodenvyConfig/db/install-pgcrypto.sh
