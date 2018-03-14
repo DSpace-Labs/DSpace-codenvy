@@ -193,9 +193,19 @@ PROPOSAL: DSpace should publish some form of this as a docker image.
 
 ## Commands Palette for DSpace
 
++++?code=CodenvyConfig/dspace-with-db.stack.json
+@[71-74](Git refresh - not sure if this happens automatically)
+@[77-80](Install local.cfg)
+@[83-85](Maven build - this might be easier to do from the terminal)
+@[89-92](Ant deploy - this might be esier to do in the command line)
+@[95-98](Create default administrator with predictable password)
+@[101-106](Start tomcat and display the preview link)
+@[109-112](Load a predictable set of test data)
+@[65-68](Repair sequences after AIP ingest - run against the db server)
 
+---
 
-
+## Demonstration
 
 
 ---
