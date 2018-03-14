@@ -196,7 +196,7 @@ PROPOSAL: DSpace should publish some form of this as a docker image.
 +++?code=CodenvyConfig/dspace-with-db.stack.json
 @[71-74](Git refresh - not sure if this happens automatically)
 @[77-80](Install local.cfg)
-@[83-85](Maven build - this might be easier to do from the terminal)
+@[83-86](Maven build - this might be easier to do from the terminal)
 @[89-92](Ant deploy - this might be esier to do in the command line)
 @[95-98](Create default administrator with predictable password)
 @[101-106](Start tomcat and display the preview link)
@@ -207,8 +207,12 @@ PROPOSAL: DSpace should publish some form of this as a docker image.
 
 ## Demonstration
 
-
 ---
 
-## Commands in DSpace Stack
+## Possibilities
+
+- Fast on-boarding of new contributors
+- Sharable test environments
+- Dev environment requiring only a browser
+- Auto-build servers with PR code
 
