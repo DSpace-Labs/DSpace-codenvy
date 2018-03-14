@@ -1,5 +1,8 @@
 
 # DSpace on Codenvy
+
+[![GitPitch](https://gitpitch.com/assets/badge.svg)](https://gitpitch.com/DSpace-Labs/DSpace-codenvy?grs=github)
+
 This is a fork of the DSpace 6.2 (non-source) release: https://github.com/DSpace/DSpace/releases/tag/dspace-6.2
 
 This repository will also contain the [configuration files and source Dockerfiles for use on the Codenvy service](CodenvyConfig/Readme.md).
