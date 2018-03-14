@@ -23,4 +23,6 @@ RUN ln -s /home/user/dspace/webapps/swordv2 /home/user/tomcat8/webapps/swordv2
 RUN ln -s /home/user/dspace/webapps/rdf /home/user/tomcat8/webapps/rdf
 RUN ln -s /home/user/dspace/webapps/solr /home/user/tomcat8/webapps/solr
 
+RUN ln -s /home/user/dspace/webapps/spring-rest /home/user/tomcat8/webapps/spring-rest
+
 ENV JAVA_OPTS=-Xmx500m
