@@ -1,0 +1,15 @@
+id,collection,dc.title[en],dc.creator[en],dc.subject[en],dc.description[en],dc.description.abstract[en]
++,123456789/3,Demo One,Person Four,cat||puppy,1 creator and 2 subjects,
++,123456789/3,Demo Two,Person One||Person Two,dog,"2 creators, 1 subject, URL in description||This sentence has a URL: http://www.google.com",
++,123456789/3,Demo Three,Person Five,bird||cat||dog||fish,"1 creator, 4 subjects",
++,123456789/3,Demo Four,Person Six||Person Three||Person Four,horse||entrée,"3 creators, 2 subjects, non-ascii character in subject",Note: has non-ascii character in metadata
++,123456789/3,Demo Five,Person Five,cow,"1 creator, 1 subject, mailto in description. Sample mailto mailto:test@test.org",
++,123456789/3,Demo Six,Person Five and Person One,kitten; puppy,"2 creators in one field, 2 subjects in one field",TODO: separate subject terms and creator
++,123456789/3,demo Seven,Person Five,seahorse,"1 creator, 1 subject, lowercase title",TODO: capitalize title
++,123456789/3,Demo Eight,Person Four,,"1 creator, 0 subject",TODO: add a subject
++,123456789/3,Demo Nine,Person Five,,"1 creator, 0 subject",TODO: add a subject
++,123456789/3,demo Ten,Person Six and Person Seven,,"1 creator, 0 subject",TODO: add a subject||TODO: capitalize title||TODO: separate creator
++,123456789/3,Demo Eleven,Person Eight,deer,"1 creator, 1 subject",
++,123456789/3,Demo Twelve,Person One,ant||wasp||bee,"1 creator, 3 subjects",
++,123456789/3,Demo Thirteen,Person Three,horse,"1 creator, 1 subject, to be marked not discoverable",TODO: withdraw
++,123456789/3,Demo Fourteen ,Person Five,frog,"1 creator, 1 subject, to be marked private",TODO: mark private
