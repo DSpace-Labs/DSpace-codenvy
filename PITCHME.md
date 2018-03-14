@@ -160,6 +160,8 @@ PROPOSAL: DSpace should publish some form of this as a docker image.
 @[17-24](Symlink DSpace 6 and 7webapp directories in tomcat webapp directories)
 @[26](Provide default memory allocation for command line tasks)
 
+--- 
+
 ## DSpace Workspace Config
 
 +++?image=presentation/ws-machine.png
@@ -172,7 +174,7 @@ PROPOSAL: DSpace should publish some form of this as a docker image.
 
 - Populated from dspace-6_2-release
   - https://github.com/DSpace-Labs/DSpace-codenvy/tree/master/dspace
-- Overrides to support Codenvy
+- Overrides to support Codenvy - via module overlay
   - [Enable rest to run over http](https://github.com/DSpace-Labs/DSpace-codenvy/blob/master/dspace/modules/rest/src/main/webapp/WEB-INF/web.xml#L62-L74)
   - [Remove SOLR localhost restriction](https://github.com/DSpace-Labs/DSpace-codenvy/blob/master/dspace/modules/solr/src/main/webapp/WEB-INF/web.xml#L86-L91)
 
@@ -183,6 +185,14 @@ PROPOSAL: DSpace should publish some form of this as a docker image.
 /home/user seems to be the only writable directory (I think)
 
 +++?code=CodenvyConfig/local.cfg
+@[31](Set output directory)
+@[75](Refrence db machine by hostname)
+@[89](Set obvious password)
+
+---
+
+## Commands Palette for DSpace
+
 
 
 
