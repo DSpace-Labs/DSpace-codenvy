@@ -64,7 +64,7 @@ https://codenvy.com/
     - At least one machine needs to contain Eclipse Che (eclipse/*) for the IDE
     - MySQL support is available by default
 
-+++?img=presentation/stacks.png
++++?image=presentation/stacks.png
 
 +++
 
@@ -144,3 +144,18 @@ PROPOSAL: DSpace should publish some form of this as a docker image.
 @[8](install pgcrypto)
 
 +++?code=CodenvyConfig/db/install-pgcrypto.sh
+
++++
+
+## DSpace Dev Machine Image
+
++++?code=CodenvyConfig/dev-machine/Dockerfile
+@[1](Built from eclipse/ubuntu_jdk8)
+@[1](Image contains Java, Maven, Tomcat)
+@[1](I think the image contains Che)
+@[2-4](Exposes the ports used by the Che editor)
+@[6-12](Intall Ant on the dev machine)
+@[14-15](Build runtime directories)
+@[14-15](Files in /home/user seem to persist within the workspace)
+@[17-24](Symlink DSpace 6 and 7webapp directories in tomcat webapp directories)
+@[26](Provide default memory allocation for command line tasks)
