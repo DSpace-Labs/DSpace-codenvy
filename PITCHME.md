@@ -46,3 +46,99 @@ https://codenvy.com/
 
 - Have not explored this
 - Could there be an opportunity to make the service available to the DSpace developer community?
+
+--- 
+
+## Eclipse Che Concepts
+
+- Stacks
+- Workspaces
+- Factories
+
++++
+## Che Stacks
+
+- Stacks
+  - Selectable Docker images for running code
+  - Single machine or multi-machine
+    - At least one machine needs to contain Eclipse Che (eclipse/*) for the IDE
+    - MySQL support is available by default
+
++++?img=presentation/stacks.png
+
++++
+
+## Stack Commands
+
+A list of available commands can be defined within a stack.
+These commands are visible to the user.
+When a command is running, a preview link can be exposed for that command.
+This is the simplest way to file the public URL for a tomcat instance running inside of Che.
+
++++
+
+## Che Workspace
+A Che workspace is a virtual machine that hosts Che Stacks
+
+- Built from a Che stack
+- References code "projects"
+- Has RAM allocation
+- Is started and stopped
+- Snapshots are saved - this is how data is persisted from session to session
+
++++
+
+## Che Factory
+
+A factory provides a single-click replication of a workspace.
+
+--- 
+
+## DSpace Configuration in Code Envy
+
++++
+
+## DSpace Che Stack
+A Codenvy Stack contains several components including a docker compose file.
+
+        "recipe": {
+          "type": "compose",
+          "content": "services:\n db:\n  image: 'terrywbrady/dspacedb:latest'\n  mem_limit: 536870912\n  environment:\n   PGDATA: /home/user/pgdata\n dev-machine:\n  image: 'terrywbrady/dspace:latest'\n  mem_limit: 2684354560\n  depends_on:\n   - db\n",
+          "contentType": "application/x-yaml"
+        }
+
+Volumes cannot be declared in the compose file.
+
++++
+## Che Docker Compose
+
+        services:
+          db:
+            image: 'terrywbrady/dspacedb:latest'
+            mem_limit: 536870912
+            environment:
+              PGDATA: /home/user/pgdata
+          dev-machine:
+            image: 'terrywbrady/dspace:latest'
+            mem_limit: 2684354560
+            depends_on:
+            - db
+@2-6(Database Image)
+@7-11 (Dev Machine Image - for Che and Tomcat)
+
++++
+
+## DSpace DB image
+
+_This was derived from https://github.com/DSpace-Labs/dspace-dev-docker/tree/master/postgres_
+
+This runs the official postgres docker image and ensures that pgcrypto has been loaded.
+
+Note: the environment variables could be externalized to the Che configuraiton
+
+PROPOSAL: DSpace should publish some form of this as a docker image.
+
++++?code=CodenvyConfig/db/Dockerfile
+@8(install pgcrypto)
+
++++?code=CodenvyConfig/db/install-pgcrypto.sh
