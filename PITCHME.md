@@ -159,3 +159,25 @@ PROPOSAL: DSpace should publish some form of this as a docker image.
 @[14-15](Files in /home/user seem to persist within the workspace)
 @[17-24](Symlink DSpace 6 and 7webapp directories in tomcat webapp directories)
 @[26](Provide default memory allocation for command line tasks)
+
+## DSpace Workspace Config
+
++++?image=presentation/ws-machines.png
+
++++?image=presentation/ws-projects.png
+
+---
+
+## DSpace Che Project
+
+- Populated from dspace-6_2-release
+  - https://github.com/DSpace-Labs/DSpace-codenvy/tree/master/dspace
+- Overrides to support Codenvy
+  - https://github.com/DSpace-Labs/DSpace-codenvy/blob/master/dspace/modules/rest/src/main/webapp/WEB-INF/web.xml#L62-L74
+  - https://github.com/DSpace-Labs/DSpace-codenvy/blob/master/dspace/modules/solr/src/main/webapp/WEB-INF/web.xml
+
+
+---
+
+## Commands in DSpace Stack
+
