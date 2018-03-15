@@ -216,3 +216,11 @@ PROPOSAL: DSpace should publish some form of this as a docker image.
 - Dev environment requiring only a browser
 - Auto-build servers with PR code
 
+---
+
+## TODO's
+
+- Figure out how to declare volumes in [Che](https://www.eclipse.org/che/docs/6/che/docs/volumes.html)
+- Integrate Mirage2 build steps
+- Determine the optimal RAM for DSpace contributions
+
