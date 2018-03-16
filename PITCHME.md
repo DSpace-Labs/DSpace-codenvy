@@ -223,4 +223,4 @@ PROPOSAL: DSpace should publish some form of this as a docker image.
 - Figure out how to declare volumes in [Che](https://www.eclipse.org/che/docs/6/che/docs/volumes.html)
 - Integrate Mirage2 build steps
 - Determine the optimal RAM for DSpace contributions
-
+- Configure code-style checks for DSpace 7
