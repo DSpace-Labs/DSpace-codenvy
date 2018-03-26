@@ -30,21 +30,25 @@ https://codenvy.com/
   - Running applications are internet accessible
   - Usable as a trial/experiment 
     - probably not reliable for meaningful development
-  - Seems to be sufficient for running "DSpace release" code
+  - Sufficient for running DSpace in tomcat
+    - and for loading "DSpace Release" code into Che
   
 +++
 
 ## Codenvy Paid Tier
   - Workspaces shut down after 4 hours of inactivity
   - Usable for development
-  - At 4GB, ieems to be sufficient for running "DSpace src" code  
-  - Have not yet tested with 5GB
+  - At 6GB, seems to be sufficient for running DSpace in tomcat
+    - and for loading "DSpace src" code into Che  
+    - Have not yet tested with 5GB
   
 +++
 
 ## Codenvy for Teams
 
 - Have not explored this
+  - Pricing as $20/user/month
+  - Unclear how much RAM is allocated in this instance
 - Could there be an opportunity to make the service available to the DSpace developer community?
 
 --- 
@@ -70,10 +74,10 @@ https://codenvy.com/
 
 ## Stack Commands
 
-A list of available commands can be defined within a stack.
-These commands are visible to the user.
-When a command is running, a preview link can be exposed for that command.
-This is the simplest way to file the public URL for a tomcat instance running inside of Che.
+- A list of available commands can be defined within a stack.
+- These commands are visible to the user.
+- When a command is running, a preview link can be exposed for that command.
+- This is the simplest way to find the public URL for a tomcat instance running inside of Che.
 
 +++
 
@@ -84,7 +88,13 @@ A Che workspace is a virtual machine that hosts Che Stacks
 - References code "projects"
 - Has RAM allocation
 - Is started and stopped
-- Snapshots are saved - this is how data is persisted from session to session
+
++++
+
+## Che Workspace Snaptshots
+- Snapshots are saved on shutdown
+  - Still exploring how to configure Docker volumes within a workspace
+- Project directories are refreshed from git on workspace startup
 
 +++
 
@@ -126,7 +136,7 @@ Volumes cannot be declared in the compose file.
 @[2-6](Database Image)
 @[6](Postgres data is written to the workspace rather than in transient storage in the docker image)
 @[7-11](Dev Machine Image - for Che and Tomcat)
-@[11](Thie defines the dependencies between the images)
+@[10-11](This defines the dependencies between the images)
 
 +++
 
@@ -134,16 +144,16 @@ Volumes cannot be declared in the compose file.
 
 _This was derived from https://github.com/DSpace-Labs/dspace-dev-docker/tree/master/postgres_
 
-This runs the official postgres docker image and ensures that pgcrypto has been loaded.
-
-Note: the environment variables could be externalized to the Che configuraiton
-
-PROPOSAL: DSpace should publish some form of this as a docker image.
+- This runs the official postgres docker image and ensures that pgcrypto has been loaded.
+- Note: the environment variables could be externalized to the Che configuration
+- PROPOSAL: DSpace should publish some form of this as a docker image.
 
 +++?code=CodenvyConfig/db/Dockerfile
-@[8](install pgcrypto)
+@[8](script to install pgcrypto)
 
 +++?code=CodenvyConfig/db/install-pgcrypto.sh
+@[4](Call psql)
+@[8](Install pgcrypto)
 
 +++
 
@@ -157,7 +167,7 @@ PROPOSAL: DSpace should publish some form of this as a docker image.
 @[6-12](Intall Ant on the dev machine)
 @[14-15](Build runtime directories)
 @[14-15](Files in /home/user seem to persist within the workspace)
-@[17-24](Symlink DSpace 6 and 7webapp directories in tomcat webapp directories)
+@[17-24](Symlink DSpace 6 and 7 webapp directories in tomcat webapp directories)
 @[26](Provide default memory allocation for command line tasks)
 
 --- 
@@ -167,6 +177,8 @@ PROPOSAL: DSpace should publish some form of this as a docker image.
 +++?image=presentation/ws-machine.png
 
 +++?image=presentation/ws-projects.png
+
++++?image=presentation/myworkspaces.png
 
 ---
 
@@ -182,7 +194,10 @@ PROPOSAL: DSpace should publish some form of this as a docker image.
 
 ## local.cfg for Che
 
-/home/user seems to be the only writable directory (I think)
+- Until I figure out how to declare volumes in the Che config, 
+  - /home/user seems to be the only writable directory within the workspace
+- Postgres runs in a separate docker image, so localhost cannot be used
+- [CodenvyConfig/local.cfg](CodenvyConfig/local.cfg)
 
 +++?code=CodenvyConfig/local.cfg
 @[31](Set output directory)
@@ -191,15 +206,30 @@ PROPOSAL: DSpace should publish some form of this as a docker image.
 
 ---
 
-## Commands Palette for DSpace
+## Sample Data in the DSpace-codenvy project
+
+- Some very simple test data to load into a newly created instance.
+  - [TestData](TestData)
+
++++
+
+## Working with Code in the Free Tier 
+- A copy of the [DSpace 6.2 release code](dspace) is part of the DSpace-codenvy project
+  - Migrating this to a new repo [DSpace-Labs/DSpace-rel-demo](https://github.com/DSpace-Labs/DSpace-rel-demo)
+- ["Making DSpace Your Own" Webinar](http://www.duraspace.org/news/registration-open-%E2%80%9Cmaking-dspace-your-own%E2%80%9D-webinar) on Apr 27 
+
+---
+
+## Commands palette for DSpace
 
 +++?code=CodenvyConfig/dspace-with-db.stack.json
 @[71-74](Git refresh - not sure if this happens automatically)
 @[77-80](Install local.cfg)
 @[83-86](Maven build - this might be easier to do from the terminal)
-@[89-92](Ant deploy - this might be esier to do in the command line)
+@[89-92](Ant deploy - this might be easier to do in the command line)
 @[95-98](Create default administrator with predictable password)
 @[101-106](Start tomcat and display the preview link)
+@[104](This link will translate into an internet accessible host/port)
 @[109-112](Load a predictable set of test data)
 @[65-68](Repair sequences after AIP ingest - run against the db server)
 
@@ -221,6 +251,6 @@ PROPOSAL: DSpace should publish some form of this as a docker image.
 ## TODO's
 
 - Figure out how to declare volumes in [Che](https://www.eclipse.org/che/docs/6/che/docs/volumes.html)
-- Integrate Mirage2 build steps
-- Determine the optimal RAM for DSpace contributions
+- Integrate Mirage2 build dependencies to Docker configs
 - Configure code-style checks for DSpace 7
+  - Does not seem possible in Che
