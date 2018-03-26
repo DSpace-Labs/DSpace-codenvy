@@ -51,6 +51,12 @@ https://codenvy.com/
   - Unclear how much RAM is allocated in this instance
 - Could there be an opportunity to make the service available to the DSpace developer community?
 
++++
+
+## (For Time) Launch DSpace Workspace Factory
+
+Once you have registered for Codenvy, click [here](https://codenvy.io/dashboard/#/load-factory/factoryb06wbz82fomzuvzq) to repeat this demo.
+
 --- 
 
 ## Eclipse Che Concepts
