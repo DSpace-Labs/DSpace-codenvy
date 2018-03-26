@@ -186,6 +186,8 @@ _This was derived from https://github.com/DSpace-Labs/dspace-dev-docker/tree/mas
 
 - Populated from dspace-6_2-release
   - https://github.com/DSpace-Labs/DSpace-codenvy/tree/master/dspace
+  - Will be migrating this to a new repo [DSpace-Labs/DSpace-rel-demo](https://github.com/DSpace-Labs/DSpace-rel-demo)
+    - ["Making DSpace Your Own" Webinar](http://www.duraspace.org/news/registration-open-%E2%80%9Cmaking-dspace-your-own%E2%80%9D-webinar) on Apr 27 
 - Overrides to support Codenvy - via module overlay
   - [Enable rest to run over http](https://github.com/DSpace-Labs/DSpace-codenvy/blob/master/dspace/modules/rest/src/main/webapp/WEB-INF/web.xml#L62-L74)
   - [Remove SOLR localhost restriction](https://github.com/DSpace-Labs/DSpace-codenvy/blob/master/dspace/modules/solr/src/main/webapp/WEB-INF/web.xml#L86-L91)
@@ -197,7 +199,7 @@ _This was derived from https://github.com/DSpace-Labs/dspace-dev-docker/tree/mas
 - Until I figure out how to declare volumes in the Che config, 
   - /home/user seems to be the only writable directory within the workspace
 - Postgres runs in a separate docker image, so localhost cannot be used
-- [CodenvyConfig/local.cfg](CodenvyConfig/local.cfg)
+  - https://github.com/DSpace-Labs/DSpace-codenvy/blob/master/CodenvyConfig/local.cfg
 
 +++?code=CodenvyConfig/local.cfg
 @[31](Set output directory)
@@ -210,13 +212,6 @@ _This was derived from https://github.com/DSpace-Labs/dspace-dev-docker/tree/mas
 
 - Some very simple test data to load into a newly created instance.
   - [TestData](TestData)
-
-+++
-
-## Working with Code in the Free Tier 
-- A copy of the [DSpace 6.2 release code](dspace) is part of the DSpace-codenvy project
-  - Migrating this to a new repo [DSpace-Labs/DSpace-rel-demo](https://github.com/DSpace-Labs/DSpace-rel-demo)
-- ["Making DSpace Your Own" Webinar](http://www.duraspace.org/news/registration-open-%E2%80%9Cmaking-dspace-your-own%E2%80%9D-webinar) on Apr 27 
 
 ---
 
