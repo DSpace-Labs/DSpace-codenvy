@@ -5,7 +5,7 @@ function die {
     exit 10
 }
 
-DSPACE_SRC=/home/user/dspace-src
+DSPACE_SRC=/home/user/dspace-src/DSpace
 DSPACE_INSTALL=/home/user/dspace
 LOCAL_CFG=/projects/DSpace-codenvy/CodenvyConfig/local.cfg
 MVN_TARGET=package
@@ -15,20 +15,17 @@ DSPACE_VER=6
 START_TOMCAT=${1:-0}
 TOMCAT=/home/user/tomcat8/bin/catalina.sh
 
-echo $START_TOMCAT
-exit
-
-cd ${DSPACE_SRC}/DSpace || die "src dir ${DSPACE_SRC} does not exist"
+cd ${DSPACE_SRC} || die "src dir ${DSPACE_SRC} does not exist"
 cp ${LOCAL_CFG} . || die "error copying local: ${LOCAL_CFG}"
 mvn ${MVN_TARGET} || die "maven failed"
 cd dspace/target/dspace-installer || die "install dir not found"
-cp /projects/DSpace-codenvy/overlay/* webapps || die "could not copy webapps overlay"
+cp -r /projects/DSpace-codenvy/overlay/* webapps || die "could not copy webapps overlay"
 
 ${TOMCAT} stop
 
-ant update
+ant update clean_backups || die "ant update failed"
 
 if [ $START_TOMCAT != 0 ]
 then
-  ${TOMCAT} stop
+  ${TOMCAT} start
 fi
