@@ -15,6 +15,9 @@ DSPACE_VER=6
 START_TOMCAT=${1:-0}
 TOMCAT=/home/user/tomcat8/bin/catalina.sh
 
+echo $START_TOMCAT
+exit
+
 cd ${DSPACE_SRC}/DSpace || die "src dir ${DSPACE_SRC} does not exist"
 cp ${LOCAL_CFG} . || die "error copying local: ${LOCAL_CFG}"
 mvn ${MVN_TARGET} || die "maven failed"
@@ -29,5 +32,3 @@ if [ $START_TOMCAT != 0 ]
 then
   ${TOMCAT} stop
 fi
-
-
