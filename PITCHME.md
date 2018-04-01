@@ -6,7 +6,7 @@
 
 +++
 ## Presentation with demonstration video
-![Full Video](https://www.youtube.com/embed/Thdv7l-yHco?start=1140)
+![Full Video](https://www.youtube.com/embed/Thdv7l-yHco?start=1180)
 
 ---
 ## What is Codenvy
