@@ -8,6 +8,7 @@ MVN_TARGET=package -Dmirage2.on=true
 DSPACE_VER=6
 START_TOMCAT=$1
 
+
 echo $START_TOMCAT
 exit
 
