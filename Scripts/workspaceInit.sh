@@ -11,7 +11,7 @@ SRCROOT=$(dirname $DSPACE_SRC)
 DSPACE_INSTALL=/home/user/dspace
 BASE_BRANCH=dspace-6_x
 TOMCAT=/home/user/tomcat8/bin/catalina.sh
-LOAD_DIR=/project/DSpace-codenvy/TestData
+LOAD_DIR=/projects/DSpace-codenvy/TestData
 
 if [ ! -e ${DSPACE_SRC} ]
 then
