@@ -1,23 +1,45 @@
 
-# DSpace on Codenvy
+# Overview
+The following overview presentation was given to the DSpace Developer Show and Tell Meeting
 
-[![GitPitch](https://gitpitch.com/assets/badge.svg)](https://gitpitch.com/DSpace-Labs/DSpace-codenvy?grs=github)
+[![GitPitch](https://gitpitch.com/assets/badge.svg)](https://gitpitch.com/DSpace-Labs/DSpace-codenvy/present1?grs=github)
 
-This is a fork of the DSpace 6.2 (non-source) release: https://github.com/DSpace/DSpace/releases/tag/dspace-6.2
+![Full Video](https://www.youtube.com/embed/Thdv7l-yHco?start=1190)
 
-This repository will also contain the [configuration files and source Dockerfiles for use on the Codenvy service](CodenvyConfig/Readme.md).
+Once you have a Codenvy account, the following [workspace factory](https://codenvy.io/dashboard/#/load-factory?id=factoryrptn7ed0wdg67je7) can be used as a quick start environment.
 
-The repository will also contain instructions on how to configure a Codenvy workspace using this code.
+## Codenvy Workspace Environment Variables
+- DSPACE_SRC
+  - /projects/DSpace
+  - /projects/DSpace-rel-demo
+  - /home/user/dspace_src/DSpace
+- BASE_BRANCH    (dspace-5_x|dspace-6_x|master)
+- DSPACE_INSTALL /home/user/dspace
+- LOAD_DIR       /projects/DSpace-Codenvy/TestData
+- LOCAL_CFG      (/projects/DSpace-Codenvy/local.cfg|/projects/DSpace-Codenvy/build.properties)
+- MVN_TARGET     (package|package -Dmirage2.on=true)
+- DSPACE_VER     (5|6|7)
 
-## Using Codenvy
-Codenvy offers a free tier that includes a server with 3GB of memory.  The server will stay alive for 15 minutes of inactivity.
+## Deployment Options
 
-With a paid plan, more memory is available.  Servers running within a paid plan stay alive for 4 hours of inactivity.
+- Use Codenvy as a deployment environment for DSpace (requires 3GB RAM)
+  - DSPACE_SRC=/home/user/dspace_src/DSpace
+- Use Codenvy as an IDE/deployment environment for DSpace "release" code (requires 3GB RAM)
+  - DSPACE_SRC=/projects/DSpace-rel-demo
+- Use Codenvy as an IDE/deployment environment for full DSpace "src" code (requires 5-6GB RAM)
+  - DSPACE_SRC=/projects/DSpace
 
-## Try it yourself
-A [local.cfg](dspace/config/local.cfg) file has been pre-configured for use on Codenvy.  This file will be installed from Docker.
+### Related Repositories
 
-It is possible to give Codenvy access to your GitHub credentials.  In this example, a repository has been cloned without read/write credentials.  The project should discuss our advice on enabling write access.
+- [DSpace Docker Images](https://github.com/DSpace-Labs/DSpace-Docker-Images)
+- [DSpace "Release" Code - Demo 6.2 Repo](https://github.com/DSpace-Labs/DSpace-rel-demo)
+
+### Notes
+
+- It is possible to give Codenvy access to your GitHub credentials.  I recommend using a secondary GitHub account with limited access rights.
+- This deployment scripts apply the following changes
+  - Since this is a test environment, the solr service deployed with the localhost restriction removed
+  - The legacy rest api is overridden to be accessible by http
 
 Once you have registered for Codenvy, click [here](https://codenvy.io/dashboard/#/load-factory/factoryb06wbz82fomzuvzq) to replicate the sample DSpace workspace.
 
