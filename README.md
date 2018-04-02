@@ -20,6 +20,8 @@ Once you have a Codenvy account, the following [workspace factory](https://coden
 - MVN_TARGET     (package|package -Dmirage2.on=true)
 - DSPACE_VER     (5|6|7)
 
+![Codenvy Dashboard Screenshot](presentation/codenvyDashboard.png)
+
 ## Deployment Options
 
 - Use Codenvy as a deployment environment for DSpace (requires 3GB RAM)
@@ -40,17 +42,3 @@ Once you have a Codenvy account, the following [workspace factory](https://coden
 - This deployment scripts apply the following changes
   - Since this is a test environment, the solr service deployed with the localhost restriction removed
   - The legacy rest api is overridden to be accessible by http
-
-Once you have registered for Codenvy, click [here](https://codenvy.io/dashboard/#/load-factory/factoryb06wbz82fomzuvzq) to replicate the sample DSpace workspace.
-
-## Demonstration Video 
-[![Demonstration Video](https://i.ytimg.com/vi/LX6RfNr0bLk/hqdefault.jpg)](https://www.youtube.com/watch?v=LX6RfNr0bLk)
-
-
-Note: Codenvy will deploy apps over http (not https).  
-  - XMLUI, JSPUI, and OAI will be accessible.  
-  - The [REST web.xml file](dspace/modules/rest/src/main/webapp/WEB-INF/web.xml#L62-L74) has been modified to disable https on Codenvy.
-
-<hr/>
-[DSpace README](https://github.com/DSpace/DSpace/blob/master/README.md)
-<hr/>
