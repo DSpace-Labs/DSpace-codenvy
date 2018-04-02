@@ -158,10 +158,33 @@ _This was derived from https://github.com/DSpace-Labs/dspace-dev-docker/tree/mas
 - Note: the environment variables could be externalized to the Che configuration
 - PROPOSAL: DSpace should publish some form of this as a docker image.
 
-+++?code=CodenvyConfig/db/Dockerfile
++++
+    # From https://github.com/DSpace-Labs/dspace-dev-docker/tree/master/postgres
+    FROM postgres
+    
+    ENV POSTGRES_DB dspace
+    ENV POSTGRES_USER dspace
+    ENV POSTGRES_PASSWORD dspace
+    
+    COPY install-pgcrypto.sh /docker-entrypoint-initdb.d/
+
 @[8](script to install pgcrypto)
 
-+++?code=https://github.com/DSpace-Labs/DSpace-Docker-Images/blob/master/dspace-postgres-pgcrypto/Dockerfile
++++
+    #!/bin/bash
+    set -e
+    
+    psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" <<-EOSQL
+      -- Create a new schema in this database named "extensions" (or whatever you want to name it)
+      CREATE SCHEMA extensions;
+      -- Enable this extension in this new schema
+      CREATE EXTENSION pgcrypto SCHEMA extensions;
+      -- Update your database's "search_path" to also search the new "extensions" schema.
+      -- You are just appending it on the end of the existing comma-separated list.
+      ALTER DATABASE dspace SET search_path TO "\$user",public,extensions;
+      -- Grant rights to call functions in the extensions schema to your dspace user
+      GRANT USAGE ON SCHEMA extensions TO $POSTGRES_USER;
+    EOSQL
 @[4](Call psql)
 @[8](Install pgcrypto)
 
@@ -169,7 +192,33 @@ _This was derived from https://github.com/DSpace-Labs/dspace-dev-docker/tree/mas
 
 ## DSpace Dev Machine Image
 
-+++?code=https://github.com/DSpace-Labs/DSpace-Docker-Images/blob/master/dspace-codenvy-tomcat/Dockerfile
++++
+    FROM eclipse/ubuntu_jdk8
+    EXPOSE 4403 8000 8080 9876 22
+    
+    LABEL che:server:8080:ref=tomcat8 che:server:8080:protocol=http che:server:8000:ref=tomcat8-debug che:server:8000:protocol=http che:server:9876:ref=codeserver che:server:9876:protocol=http
+    
+    ENV ANT_VERSION 1.10.2
+    ENV ANT_HOME /home/user/ant-$ANT_VERSION
+    ENV PATH $ANT_HOME/bin:$PATH
+    
+    
+    RUN mkdir $ANT_HOME && \
+        wget -qO- "https://www.apache.org/dist/ant/binaries/apache-ant-$ANT_VERSION-bin.tar.gz" | tar -zx --strip-components=1 -C $ANT_HOME 
+    
+    RUN mkdir /home/user/dspace
+    RUN mkdir /home/user/dspace/upload
+    
+    RUN ln -s /home/user/dspace/webapps/xmlui /home/user/tomcat8/webapps/xmlui
+    RUN ln -s /home/user/dspace/webapps/jspui /home/user/tomcat8/webapps/jspui
+    RUN ln -s /home/user/dspace/webapps/rest /home/user/tomcat8/webapps/rest
+    RUN ln -s /home/user/dspace/webapps/oai /home/user/tomcat8/webapps/oai
+    RUN ln -s /home/user/dspace/webapps/sword /home/user/tomcat8/webapps/sword
+    RUN ln -s /home/user/dspace/webapps/swordv2 /home/user/tomcat8/webapps/swordv2
+    RUN ln -s /home/user/dspace/webapps/rdf /home/user/tomcat8/webapps/rdf
+    RUN ln -s /home/user/dspace/webapps/solr /home/user/tomcat8/webapps/solr
+    
+    ENV JAVA_OPTS=-Xmx500m
 @[1](Built from eclipse/ubuntu_jdk8)
 @[1](Image contains Java, Maven, Tomcat)
 @[1](I think the image contains Che)
