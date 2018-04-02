@@ -4,6 +4,10 @@
 - Terry Brady, Georgetown University Library
 - https://github.com/terrywbrady/info
 
++++
+## Presentation with demonstration video
+![Full Video](https://www.youtube.com/embed/Thdv7l-yHco?start=1190)
+
 ---
 ## What is Codenvy
 
