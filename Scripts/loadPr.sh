@@ -24,5 +24,5 @@ git checkout -b test-pr
 
 for pr in $*
 do
-git merge origin/pr/$pr
+git merge --no-edit origin/pr/$pr
 done
