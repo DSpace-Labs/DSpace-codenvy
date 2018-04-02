@@ -1,0 +1,129 @@
+{
+  "name": "dspace-scripted",
+  "id": "stackvnnbsp6c96sxirrx",
+  "scope": "general",
+  "source": {
+    "type": "image",
+    "origin": "eclipse/ubuntu_jdk8"
+  },
+  "description": "Designed for running DSpace 6.",
+  "components": [
+    {
+      "name": "JDK",
+      "version": "1.8.0_45"
+    },
+    {
+      "name": "Maven",
+      "version": "3.2.2"
+    },
+    {
+      "name": "Tomcat",
+      "version": "8.0.24"
+    },
+    {
+      "name": "Ant",
+      "version": "1.10.2"
+    }
+  ],
+  "workspaceConfig": {
+    "name": "dspace-with-db5-4G",
+    "environments": {
+      "default": {
+        "machines": {
+          "db": {
+            "attributes": {
+              "memoryLimitBytes": "536870912"
+            },
+            "servers": {},
+            "agents": [
+              "org.eclipse.che.exec",
+              "org.eclipse.che.terminal"
+            ]
+          },
+          "dev-machine": {
+            "attributes": {
+              "memoryLimitBytes": "2684354560"
+            },
+            "servers": {},
+            "agents": [
+              "org.eclipse.che.exec",
+              "org.eclipse.che.terminal",
+              "org.eclipse.che.ws-agent",
+              "org.eclipse.che.ssh"
+            ]
+          }
+        },
+        "recipe": {
+          "type": "compose",
+          "content": "services:\n db:\n  image: 'dspace/dspace-postgres-pgcrypto:latest'\n  mem_limit: 536870912\n  environment:\n   PGDATA: /home/user/pgdata\n dev-machine:\n  image: 'dspace/dspace-codenvy-tomcat:latest'\n  mem_limit: 2684354560\n  depends_on:\n   - db\n  environment:\n   BASE_BRANCH: dspace-6_x\n   DSPACE_INSTALL: /home/user/dspace\n   LOCAL_CFG: /projects/DSpace-codenvy/CodenvyConfig/local.cfg\n   MVN_TARGET: package\n   MVN_TARGETx: package -Dmirage2.on=true\n   DSPACE_VER: '6'\n   LOAD_DIR: /projects/DSpace-codenvy/TestData\n   DSPACE_SRC: /home/user/dspace-src/DSpace\n",
+          "contentType": "application/x-yaml"
+        }
+      }
+    },
+    "commands": [
+      {
+        "name": "reveal tomcat path",
+        "type": "custom",
+        "attributes": {},
+        "commandLine": "echo ${server.8080}xmlui"
+      },
+      {
+        "name": "rebuild repo",
+        "type": "custom",
+        "attributes": {
+          "previewUrl": "${server.8080}xmlui"
+        },
+        "commandLine": "/projects/DSpace-codenvy/Scripts/build.sh"
+      },
+      {
+        "name": "Initialize repo",
+        "type": "custom",
+        "attributes": {
+          "previewUrl": "${server.8080}xmlui"
+        },
+        "commandLine": "/projects/DSpace-codenvy/Scripts/workspaceInit.sh"
+      },
+      {
+        "name": "repair sequences after AIP restore (db server)",
+        "type": "custom",
+        "attributes": {},
+        "commandLine": "psql -U dspace -c \"SELECT setval('handle_seq', CAST ( max(to_number(regexp_replace(handle, '.*/', ''), '999999999999')) AS BIGINT)) FROM handle WHERE handle SIMILAR TO '%/[0123456789]*';\""
+      },
+      {
+        "name": "start tomcat",
+        "type": "Run",
+        "attributes": {
+          "previewUrl": "${server.8080}xmlui"
+        },
+        "commandLine": "export JAVA_OPTS=-Xmx1300m;/home/user/tomcat8/bin/catalina.sh run"
+      },
+      {
+        "name": "give exec writes to scripts",
+        "type": "custom",
+        "attributes": {},
+        "commandLine": "chmod 744 /projects/DSpace-codenvy/Scripts/*.sh"
+      }
+    ],
+    "projects": [
+      {
+        "name": "DSpace-codenvy",
+        "path": "/DSpace-codenvy",
+        "attributes": {},
+        "source": {
+          "location": "https://github.com/DSpace-Labs/DSpace-codenvy.git",
+          "type": "git",
+          "parameters": {}
+        },
+        "description": "",
+        "links": [],
+        "problems": [],
+        "mixins": []
+      }    ],
+    "defaultEnv": "default",
+    "links": []
+  },
+  "tags": [
+    "Java 1.8, Tomcat 8, MySQL 5.7, Ant 1.10.2"
+  ],
+  "creator": "user7h4bmyl4ya6roowy"
+}

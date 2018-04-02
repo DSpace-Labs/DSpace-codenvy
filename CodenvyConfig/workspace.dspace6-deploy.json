@@ -1,0 +1,99 @@
+{
+  "name": "dspace6-deploy",
+  "environments": {
+    "default": {
+      "machines": {
+        "db": {
+          "attributes": {
+            "memoryLimitBytes": "536870912"
+          },
+          "servers": {},
+          "agents": [
+            "org.eclipse.che.exec",
+            "org.eclipse.che.terminal"
+          ]
+        },
+        "dev-machine": {
+          "attributes": {
+            "memoryLimitBytes": "2684354560"
+          },
+          "servers": {},
+          "agents": [
+            "org.eclipse.che.exec",
+            "org.eclipse.che.terminal",
+            "org.eclipse.che.ws-agent",
+            "org.eclipse.che.ssh"
+          ]
+        }
+      },
+      "recipe": {
+        "type": "compose",
+        "content": "services:\n db:\n  image: 'dspace/dspace-postgres-pgcrypto:latest'\n  mem_limit: 536870912\n  environment:\n   PGDATA: /home/user/pgdata\n dev-machine:\n  image: 'dspace/dspace-codenvy-tomcat:latest'\n  mem_limit: 2684354560\n  depends_on:\n   - db\n  environment:\n   BASE_BRANCH: dspace-6_x\n   DSPACE_INSTALL: /home/user/dspace\n   LOCAL_CFG: /projects/DSpace-codenvy/CodenvyConfig/local.cfg\n   MVN_TARGET: package\n   MVN_TARGETx: package -Dmirage2.on=true\n   DSPACE_VER: '6'\n   LOAD_DIR: /projects/DSpace-codenvy/TestData\n   DSPACE_SRC: /home/user/dspace-src/DSpace\n",
+        "contentType": "application/x-yaml"
+      }
+    }
+  },
+  "commands": [
+    {
+      "name": "rebuild repo",
+      "type": "custom",
+      "attributes": {
+        "previewUrl": "${server.8080}xmlui"
+      },
+      "commandLine": "/projects/DSpace-codenvy/Scripts/build.sh"
+    },
+    {
+      "name": "Initialize repo",
+      "type": "custom",
+      "attributes": {
+        "previewUrl": "${server.8080}xmlui"
+      },
+      "commandLine": "/projects/DSpace-codenvy/Scripts/workspaceInit.sh"
+    },
+    {
+      "name": "repair sequences after AIP restore (db server)",
+      "type": "custom",
+      "attributes": {},
+      "commandLine": "psql -U dspace -c \"SELECT setval('handle_seq', CAST ( max(to_number(regexp_replace(handle, '.*/', ''), '999999999999')) AS BIGINT)) FROM handle WHERE handle SIMILAR TO '%/[0123456789]*';\""
+    },
+    {
+      "name": "start tomcat",
+      "type": "Run",
+      "attributes": {
+        "previewUrl": "${server.8080}xmlui"
+      },
+      "commandLine": "export JAVA_OPTS=-Xmx1300m;/home/user/tomcat8/bin/catalina.sh run"
+    },
+    {
+      "name": "give exec writes to scripts",
+      "type": "custom",
+      "attributes": {},
+      "commandLine": "chmod 744 /projects/DSpace-codenvy/Scripts/*.sh"
+    }
+  ],
+  "projects": [
+    {
+      "name": "DSpace-codenvy",
+      "type": "blank",
+      "path": "/DSpace-codenvy",
+      "attributes": {
+        "contribute_to_branch": [
+          "master"
+        ]
+      },
+      "source": {
+        "location": "https://github.com/DSpace-Labs/DSpace-codenvy.git",
+        "type": "git",
+        "parameters": {}
+      },
+      "description": "",
+      "links": [],
+      "problems": [],
+      "mixins": [
+        "pullrequest"
+      ]
+    }
+  ],
+  "defaultEnv": "default",
+  "links": []
+}
