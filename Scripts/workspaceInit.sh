@@ -26,6 +26,7 @@ then
   git clone https://github.com/DSpace/DSpace.git || die "cannot clone DSpace here"
   cd $DSPACE_SRC
   git checkout $BASE_BRANCH || die "cannot checkout $BASE_BRANCH"
+  git config --add remote.origin.fetch "+refs/pull/*/head:refs/remotes/origin/pr/*"
 fi
 
 ${SCRIPTS}/build.sh || die "build failed"
