@@ -176,7 +176,7 @@ _This was derived from https://github.com/DSpace-Labs/dspace-dev-docker/tree/mas
 
     #!/bin/bash
     set -e
-    
+        
     psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" <<-EOSQL
       -- Create a new schema in this database named "extensions" (or whatever you want to name it)
       CREATE SCHEMA extensions;
@@ -188,7 +188,7 @@ _This was derived from https://github.com/DSpace-Labs/dspace-dev-docker/tree/mas
       -- Grant rights to call functions in the extensions schema to your dspace user
       GRANT USAGE ON SCHEMA extensions TO $POSTGRES_USER;
     EOSQL
-    
+
 @[4](Call psql)
 @[8](Install pgcrypto)
 
