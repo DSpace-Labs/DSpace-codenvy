@@ -161,7 +161,7 @@ _This was derived from https://github.com/DSpace-Labs/dspace-dev-docker/tree/mas
 +++?code=CodenvyConfig/db/Dockerfile
 @[8](script to install pgcrypto)
 
-+++?code=CodenvyConfig/db/install-pgcrypto.sh
++++?code=https://github.com/DSpace-Labs/DSpace-Docker-Images/blob/master/dspace-postgres-pgcrypto/Dockerfile
 @[4](Call psql)
 @[8](Install pgcrypto)
 
@@ -169,7 +169,7 @@ _This was derived from https://github.com/DSpace-Labs/dspace-dev-docker/tree/mas
 
 ## DSpace Dev Machine Image
 
-+++?code=CodenvyConfig/dev-machine/Dockerfile
++++?code=https://github.com/DSpace-Labs/DSpace-Docker-Images/blob/master/dspace-codenvy-tomcat/Dockerfile
 @[1](Built from eclipse/ubuntu_jdk8)
 @[1](Image contains Java, Maven, Tomcat)
 @[1](I think the image contains Che)
@@ -222,21 +222,6 @@ _This was derived from https://github.com/DSpace-Labs/dspace-dev-docker/tree/mas
 
 - Some very simple test data to load into a newly created instance.
   - [TestData](TestData)
-
----
-
-## Commands palette for DSpace
-
-+++?code=CodenvyConfig/dspace-with-db.stack.json
-@[71-74](Git refresh - not sure if this happens automatically)
-@[77-80](Install local.cfg)
-@[83-86](Maven build - this might be easier to do from the terminal)
-@[89-92](Ant deploy - this might be easier to do in the command line)
-@[95-98](Create default administrator with predictable password)
-@[101-106](Start tomcat and display the preview link)
-@[104](This link will translate into an internet accessible host/port)
-@[109-112](Load a predictable set of test data)
-@[65-68](Repair sequences after AIP ingest - run against the db server)
 
 ---
 
