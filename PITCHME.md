@@ -158,10 +158,10 @@ _This was derived from https://github.com/DSpace-Labs/dspace-dev-docker/tree/mas
 - Note: the environment variables could be externalized to the Che configuration
 - PROPOSAL: DSpace should publish some form of this as a docker image.
 
-+++code=presentation/dspace-codenvy-pgcrypto
++++?code=presentation/dspace-codenvy-pgcrypto
 @[8](script to install pgcrypto)
 
-+++code=presentation/install-pgcrypto.sh
++++?code=presentation/install-pgcrypto.sh
 @[4](Call psql)
 @[8](Install pgcrypto)
 
@@ -169,7 +169,7 @@ _This was derived from https://github.com/DSpace-Labs/dspace-dev-docker/tree/mas
 
 ## DSpace Dev Machine Image
 
-+++code=presentation/dspace-codenvy-tomcat
++++?code=presentation/dspace-codenvy-tomcat
 @[1](Built from eclipse/ubuntu_jdk8)
 @[1](Image contains Java, Maven, Tomcat)
 @[1](I think the image contains Che)
