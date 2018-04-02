@@ -28,5 +28,5 @@ ant update clean_backups || die "ant update failed"
 
 if [ $START_TOMCAT != 0 ]
 then
-  ${TOMCAT} start
+  ${TOMCAT} run
 fi
