@@ -1,28 +1,24 @@
-# Script Notes
+## ENV Variables set in Codenvy Stack
 
-## Image Notes
-- add ant to path
-- add dspace_install/bin to path
-- custom tasks
-  - chmod 744 /projects/DSpace-Codenvy/Scripts/*.sh
-  - initRepo();echo ${server.8080}
-  - buildRepo()
-  - start tomcat
-  - echo ${server.8080}
-
-## ENV VARIABLES
-
-- BASE_BRANCH
-  - dspace-6_x
-  - master
 - DSPACE_SRC
   - /projects/DSpace
+    - If you intend to modify code, you will add the DSpace code base as a project and set this variable.
+    - Note about Codenvy RAM
+      - DSpace "release" code requires 3GB RAM
+      - DSpace "src" code requires 5-6GB RAM
   - /home/user/dspace_src
+    - Use this value to clone DSpace locally (for testing rather than code editing)
+- BASE_BRANCH
+  - If DSpace code will be cloned, define the branch to checkout after cloning
+  - dspace-6_x
+  - master
 - DSPACE_INSTALL
   - /home/user/dspace
 - LOAD_DIR
+  - Use this variable to load a directory with Collection and Item AIP files
   - /projects/DSpace-Codenvy/TestData
 - LOCAL_CFG
+  - Use this variable to set the appropriate local overrides
   - /projects/DSpace-Codenvy/local.cfg
   - /projects/DSpace-Codenvy/build.properties
   - blank
@@ -34,27 +30,8 @@
   - 6
   - 7
 
-## INIT SCRIPT
+## Other Useful Commands
 
-- If DSPACE_SRC does not exist
-  - mkdir $DSPACE_SRC
-  - cd $(dirname $DSPACE_SRC)
-  - git clone https://github.com/DSpace/DSpace.git
-  - git checkout BASE_BRANCH
-- cd $DSPACE_SRC
-- cp build.properties / load.cfg if needed
-  - If DSPACE_VER = 5
-      cp $LOCAL_CFG DSPACE_SRC/local.cfg
-    else
-      cp $LOCAL_CFG DSPACE_SRC/build.properties
-- mvn $MVN_TARGET
-- cd dspace/target/dspace_target
-- stop tomcat if needed
-- if $1 is true
-  start tomcat
+  - git config --add remote.DSpace.fetch "+refs/pull/*/head:refs/remotes/origin/pr/*"
 
-## Start tomcat
-- start
-- echo
 
-## PR test
