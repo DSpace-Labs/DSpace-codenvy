@@ -170,7 +170,7 @@ _This was derived from https://github.com/DSpace-Labs/dspace-dev-docker/tree/mas
     
     COPY install-pgcrypto.sh /docker-entrypoint-initdb.d/
 
-@[8](script to install pgcrypto)
+@[9](script to install pgcrypto)
 
 +++
 
@@ -188,6 +188,7 @@ _This was derived from https://github.com/DSpace-Labs/dspace-dev-docker/tree/mas
       -- Grant rights to call functions in the extensions schema to your dspace user
       GRANT USAGE ON SCHEMA extensions TO $POSTGRES_USER;
     EOSQL
+    
 @[4](Call psql)
 @[8](Install pgcrypto)
 
@@ -223,6 +224,7 @@ _This was derived from https://github.com/DSpace-Labs/dspace-dev-docker/tree/mas
     RUN ln -s /home/user/dspace/webapps/solr /home/user/tomcat8/webapps/solr
     
     ENV JAVA_OPTS=-Xmx500m
+
 @[1](Built from eclipse/ubuntu_jdk8)
 @[1](Image contains Java, Maven, Tomcat)
 @[1](I think the image contains Che)
