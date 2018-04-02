@@ -2,3 +2,4 @@
 dspace/target/*
 dspace/modules/*/target/*
 /local.cfg
+/build.properties
