@@ -159,7 +159,9 @@ _This was derived from https://github.com/DSpace-Labs/dspace-dev-docker/tree/mas
 - PROPOSAL: DSpace should publish some form of this as a docker image.
 
 +++
+
     # From https://github.com/DSpace-Labs/dspace-dev-docker/tree/master/postgres
+
     FROM postgres
     
     ENV POSTGRES_DB dspace
@@ -171,6 +173,7 @@ _This was derived from https://github.com/DSpace-Labs/dspace-dev-docker/tree/mas
 @[8](script to install pgcrypto)
 
 +++
+
     #!/bin/bash
     set -e
     
@@ -193,6 +196,7 @@ _This was derived from https://github.com/DSpace-Labs/dspace-dev-docker/tree/mas
 ## DSpace Dev Machine Image
 
 +++
+
     FROM eclipse/ubuntu_jdk8
     EXPOSE 4403 8000 8080 9876 22
     
