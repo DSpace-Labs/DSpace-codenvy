@@ -7,11 +7,11 @@ function die {
 
 # Set the following
 # DSPACE_SRC=/home/user/dspace-src/DSpace
-# SRCROOT=$(dirname $DSPACE_SRC)
 # DSPACE_INSTALL=/home/user/dspace
 # BASE_BRANCH=dspace-6_x
 # LOAD_DIR=/projects/DSpace-codenvy/TestData
 
+SRCROOT=$(dirname $DSPACE_SRC)
 SCRIPTS=/projects/DSpace-codenvy/Scripts
 TOMCAT=/home/user/tomcat8/bin/catalina.sh
 
