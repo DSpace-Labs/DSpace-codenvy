@@ -41,5 +41,5 @@ then
   done
 fi
 
-${TOMCAT} start
+${TOMCAT} run
 
