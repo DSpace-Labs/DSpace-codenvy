@@ -5,13 +5,15 @@ function die {
     exit 10
 }
 
+# Set the following
+# DSPACE_SRC=/home/user/dspace-src/DSpace
+# SRCROOT=$(dirname $DSPACE_SRC)
+# DSPACE_INSTALL=/home/user/dspace
+# BASE_BRANCH=dspace-6_x
+# LOAD_DIR=/projects/DSpace-codenvy/TestData
+
 SCRIPTS=/projects/DSpace-codenvy/Scripts
-DSPACE_SRC=/home/user/dspace-src/DSpace
-SRCROOT=$(dirname $DSPACE_SRC)
-DSPACE_INSTALL=/home/user/dspace
-BASE_BRANCH=dspace-6_x
 TOMCAT=/home/user/tomcat8/bin/catalina.sh
-LOAD_DIR=/projects/DSpace-codenvy/TestData
 
 if [ ! -e ${DSPACE_SRC} ]
 then

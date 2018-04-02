@@ -5,12 +5,13 @@ function die {
     exit 10
 }
 
-DSPACE_SRC=/home/user/dspace-src/DSpace
-DSPACE_INSTALL=/home/user/dspace
-LOCAL_CFG=/projects/DSpace-codenvy/CodenvyConfig/local.cfg
-MVN_TARGET=package
-#MVN_TARGET="package -Dmirage2.on=true"
-DSPACE_VER=6
+# set the following in Codenvy configs
+# DSPACE_SRC=/home/user/dspace-src/DSpace
+# DSPACE_INSTALL=/home/user/dspace
+# LOCAL_CFG=/projects/DSpace-codenvy/CodenvyConfig/local.cfg
+# MVN_TARGET=package
+# MVN_TARGET="package -Dmirage2.on=true"
+# DSPACE_VER=6
 
 START_TOMCAT=${1:-0}
 TOMCAT=/home/user/tomcat8/bin/catalina.sh
