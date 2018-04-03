@@ -65,7 +65,7 @@
       "commandLine": "export JAVA_OPTS=-Xmx1300m;/home/user/tomcat8/bin/catalina.sh run"
     },
     {
-      "name": "give exec writes to scripts",
+      "name": "give exec rights to scripts",
       "type": "custom",
       "attributes": {},
       "commandLine": "chmod 744 /projects/DSpace-codenvy/Scripts/*.sh"
