@@ -59,7 +59,7 @@ https://codenvy.com/
 
 ## (For Time) Launch DSpace Workspace Factory
 
-Once you have registered for Codenvy, click [here](https://codenvy.io/dashboard/#/load-factory/factoryb06wbz82fomzuvzq) to repeat this demo.
+Once you have registered for Codenvy, click [here](https://codenvy.io/dashboard/#/load-factory?id=factoryrptn7ed0wdg67je7) to repeat this demo.
 
 --- 
 

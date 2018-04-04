@@ -2,9 +2,9 @@
 # Overview
 The following overview presentation was given to the DSpace Developer Show and Tell Meeting
 
-[![GitPitch](https://gitpitch.com/assets/badge.svg)](https://gitpitch.com/DSpace-Labs/DSpace-codenvy/present1?grs=github)
+[![GitPitch](https://gitpitch.com/assets/badge.svg)](https://gitpitch.com/DSpace-Labs/DSpace-codenvy?grs=github)
 
-![Full Video](https://www.youtube.com/embed/Thdv7l-yHco?start=1190)
+[![Demonstration Video](https://i.ytimg.com/vi/Thdv7l-yHco/hqdefault.jpg)](https://www.youtube.com/watch?v=Thdv7l-yHco)
 
 Once you have a Codenvy account, the following [workspace factory](https://codenvy.io/dashboard/#/load-factory?id=factoryrptn7ed0wdg67je7) can be used as a quick start environment.
 
