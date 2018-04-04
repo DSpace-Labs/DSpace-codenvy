@@ -13,7 +13,7 @@ function die {
 # MVN_TARGET="package -Dmirage2.on=true"
 # DSPACE_VER=6
 
-START_TOMCAT=${1:-0}
+START_TOMCAT=${1:-1}
 TOMCAT=/home/user/tomcat8/bin/catalina.sh
 
 cd ${DSPACE_SRC} || die "src dir ${DSPACE_SRC} does not exist"

@@ -29,7 +29,7 @@ then
   git config --add remote.origin.fetch "+refs/pull/*/head:refs/remotes/origin/pr/*"
 fi
 
-${SCRIPTS}/build.sh || die "build failed"
+${SCRIPTS}/build.sh 0 || die "build failed"
 
 ${DSPACE_INSTALL}/bin/dspace create-administrator -e test@test.edu -f Admin -l User -p admin -c en || die "create admin failed"
 
