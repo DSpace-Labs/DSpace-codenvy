@@ -44,8 +44,6 @@ Once you have a Codenvy account, the following [workspace factory](https://coden
   - The legacy rest api is overridden to be accessible by http
 - OAI Service
   - The following settings (appropriate to runtime container) must be set to test the OAI Service
-
-    dspace.hostname = node12.codenvy.io:51943
-    dspace.baseUrl = http://node12.codenvy.io:51943
-
+    - `dspace.hostname = node12.codenvy.io:51943`
+    - `dspace.baseUrl = http://node12.codenvy.io:51943`
   - Note, the ORE component of the OAI service does not seem to work.
