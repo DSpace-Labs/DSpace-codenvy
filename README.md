@@ -47,3 +47,4 @@ Once you have a Codenvy account, the following [workspace factory](https://coden
     - `dspace.hostname = node12.codenvy.io:51943`
     - `dspace.baseUrl = http://node12.codenvy.io:51943`
   - Note, the ORE component of the OAI service does not seem to work.
+- "mcedit" is available as an ad-hoc text editor on the server
