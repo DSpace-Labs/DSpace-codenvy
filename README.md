@@ -1,5 +1,5 @@
 
-# Overview
+# Overview 
 The following overview presentation was given to the DSpace Developer Show and Tell Meeting
 
 [![GitPitch](https://gitpitch.com/assets/badge.svg)](https://gitpitch.com/DSpace-Labs/DSpace-codenvy?grs=github)
