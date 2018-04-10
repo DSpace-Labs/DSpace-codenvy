@@ -1,4 +1,3 @@
-
 # Overview 
 The following overview presentation was given to the DSpace Developer Show and Tell Meeting
 
