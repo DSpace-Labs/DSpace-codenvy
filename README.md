@@ -1,5 +1,4 @@
-
-# Overview
+# Overview 
 The following overview presentation was given to the DSpace Developer Show and Tell Meeting
 
 [![GitPitch](https://gitpitch.com/assets/badge.svg)](https://gitpitch.com/DSpace-Labs/DSpace-codenvy?grs=github)
@@ -42,3 +41,9 @@ Once you have a Codenvy account, the following [workspace factory](https://coden
 - This deployment scripts apply the following changes
   - Since this is a test environment, the solr service deployed with the localhost restriction removed
   - The legacy rest api is overridden to be accessible by http
+- OAI Service
+  - The following settings (appropriate to runtime container) must be set to test the OAI Service
+    - `dspace.hostname = node12.codenvy.io:51943`
+    - `dspace.baseUrl = http://node12.codenvy.io:51943`
+  - Note, the ORE component of the OAI service does not seem to work.
+- "mcedit" is available as an ad-hoc text editor on the server

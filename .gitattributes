@@ -1,2 +1,5 @@
-Dockerfile text eol=lf
-*.sh eol=lf
+* text=auto
+*.txt text
+Dockerfile text
+*.sh text
+*.md text 
