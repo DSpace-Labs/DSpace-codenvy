@@ -1,3 +1,7 @@
+## Updated Reference
+
+See https://wiki.duraspace.org/display/~terrywbrady/Using+Published+DSpace+Images+in+Codenvy for updated instructions for using Codenvy with published DSpace Docker Images.
+
 # Overview 
 The following overview presentation was given to the DSpace Developer Show and Tell Meeting
 
