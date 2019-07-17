@@ -1,15 +1,15 @@
 ---
-## Running DSpace on Codenvy
+### Running DSpace on Codenvy
 
 - Terry Brady, Georgetown University Library
 - https://github.com/terrywbrady/info
 
 +++
-## Presentation with demonstration video
+### Presentation with demonstration video
 ![Full Video](https://www.youtube.com/embed/Thdv7l-yHco?start=1190)
 
 ---
-## What is Codenvy
+### What is Codenvy
 
 https://codenvy.com/
 
@@ -21,7 +21,7 @@ https://codenvy.com/
   
 +++
 
-## Codenvy Service
+### Codenvy Service
 
 - Free account tier (up to 3GB RAM)
 - Paid account tier ($10/mo per additional GB)
@@ -29,7 +29,7 @@ https://codenvy.com/
 
 +++
 
-## Codenvy Free Tier
+### Codenvy Free Tier
   - Workspaces shut down after 15 min of inactivity
   - Running applications are internet accessible
   - Usable as a trial/experiment 
@@ -39,7 +39,7 @@ https://codenvy.com/
   
 +++
 
-## Codenvy Paid Tier
+### Codenvy Paid Tier
   - Workspaces shut down after 4 hours of inactivity
   - Usable for development
   - At 6GB, seems to be sufficient for running DSpace in tomcat
@@ -48,7 +48,7 @@ https://codenvy.com/
   
 +++
 
-## Codenvy for Teams
+### Codenvy for Teams
 
 - Have not explored this
   - Pricing as $20/user/month
@@ -57,20 +57,20 @@ https://codenvy.com/
 
 +++
 
-## (For Time) Launch DSpace Workspace Factory
+### (For Time) Launch DSpace Workspace Factory
 
 Once you have registered for Codenvy, click [here](https://codenvy.io/dashboard/#/load-factory?id=factoryrptn7ed0wdg67je7) to repeat this demo.
 
 --- 
 
-## Eclipse Che Concepts
+### Eclipse Che Concepts
 
 - Stacks
 - Workspaces
 - Factories
 
 +++
-## Che Stacks
+### Che Stacks
 
 - Stacks
   - Selectable Docker images for running code
@@ -82,7 +82,7 @@ Once you have registered for Codenvy, click [here](https://codenvy.io/dashboard/
 
 +++
 
-## Stack Commands
+### Stack Commands
 
 - A list of available commands can be defined within a stack.
 - These commands are visible to the user.
@@ -91,7 +91,7 @@ Once you have registered for Codenvy, click [here](https://codenvy.io/dashboard/
 
 +++
 
-## Che Workspace
+### Che Workspace
 A Che workspace is a virtual machine that hosts Che Stacks
 
 - Built from a Che stack
@@ -101,24 +101,24 @@ A Che workspace is a virtual machine that hosts Che Stacks
 
 +++
 
-## Che Workspace Snaptshots
+### Che Workspace Snaptshots
 - Snapshots are saved on shutdown
   - Still exploring how to configure Docker volumes within a workspace
 - Project directories are refreshed from git on workspace startup
 
 +++
 
-## Che Factory
+### Che Factory
 
 A factory provides a single-click replication of a workspace.
 
 --- 
 
-## DSpace Configuration in Code Envy
+### DSpace Configuration in Code Envy
 
 +++
 
-## DSpace Che Stack
+### DSpace Che Stack
 A Codenvy Stack contains several components including a docker compose file.
 
         "recipe": {
@@ -130,7 +130,7 @@ A Codenvy Stack contains several components including a docker compose file.
 Volumes cannot be declared in the compose file.
 
 +++
-## Che Docker Compose
+### Che Docker Compose
 
         services:
           db:
@@ -150,7 +150,7 @@ Volumes cannot be declared in the compose file.
 
 +++
 
-## DSpace DB image
+### DSpace DB image
 
 _This was derived from https://github.com/DSpace-Labs/dspace-dev-docker/tree/master/postgres_
 
@@ -167,7 +167,7 @@ _This was derived from https://github.com/DSpace-Labs/dspace-dev-docker/tree/mas
 
 +++
 
-## DSpace Dev Machine Image
+### DSpace Dev Machine Image
 
 +++?code=presentation/dspace-codenvy-tomcat
 @[1](Built from eclipse/ubuntu_jdk8)
@@ -182,7 +182,7 @@ _This was derived from https://github.com/DSpace-Labs/dspace-dev-docker/tree/mas
 
 --- 
 
-## DSpace Workspace Config
+### DSpace Workspace Config
 
 +++?image=presentation/ws-machine.png
 
@@ -192,7 +192,7 @@ _This was derived from https://github.com/DSpace-Labs/dspace-dev-docker/tree/mas
 
 ---
 
-## DSpace Che Project
+### DSpace Che Project
 
 - Populated from dspace-6_2-release
   - https://github.com/DSpace-Labs/DSpace-codenvy/tree/master/dspace
@@ -204,7 +204,7 @@ _This was derived from https://github.com/DSpace-Labs/dspace-dev-docker/tree/mas
 
 +++ 
 
-## local.cfg for Che
+### local.cfg for Che
 
 - Until I figure out how to declare volumes in the Che config, 
   - /home/user seems to be the only writable directory within the workspace
@@ -218,18 +218,18 @@ _This was derived from https://github.com/DSpace-Labs/dspace-dev-docker/tree/mas
 
 ---
 
-## Sample Data in the DSpace-codenvy project
+### Sample Data in the DSpace-codenvy project
 
 - Some very simple test data to load into a newly created instance.
   - [TestData](TestData)
 
 ---
 
-## Demonstration
+### Demonstration
 
 ---
 
-## Possibilities
+### Possibilities
 
 - Fast on-boarding of new contributors
 - Sharable test environments
@@ -238,7 +238,7 @@ _This was derived from https://github.com/DSpace-Labs/dspace-dev-docker/tree/mas
 
 ---
 
-## TODO's
+### TODO's
 
 - Figure out how to declare volumes in [Che](https://www.eclipse.org/che/docs/6/che/docs/volumes.html)
 - Integrate Mirage2 build dependencies to Docker configs
